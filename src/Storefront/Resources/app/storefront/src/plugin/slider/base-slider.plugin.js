@@ -149,12 +149,12 @@ export default class BaseSliderPlugin extends Plugin {
      * @private
      */
     _initSlider() {
-        this.el.classList.add(this.options.initializedCls);
-
         const container = this.el.querySelector(this.options.containerSelector);
         const controlsContainer = this.el.querySelector(this.options.controlsSelector);
         const onInit = () => {
             PluginManager.initializePlugins();
+
+            this.el.classList.add(this.options.initializedCls);
 
             this.$emitter.publish('initSlider');
         };

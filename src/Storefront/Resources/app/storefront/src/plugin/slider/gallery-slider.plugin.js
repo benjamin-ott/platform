@@ -196,8 +196,6 @@ export default class GallerySliderPlugin extends BaseSliderPlugin {
    * @private
    */
   _initSlider() {
-      this.el.classList.add(this.options.initializedCls);
-
       const container = this.el.querySelector(this.options.containerSelector);
       const navContainer = this.el.querySelector(this.options.thumbnailsSelector);
       const controlsContainer = this.el.querySelector(this.options.controlsSelector);
@@ -206,6 +204,8 @@ export default class GallerySliderPlugin extends BaseSliderPlugin {
           const onInit = () => {
               PluginManager.initializePlugin('Magnifier', '[data-magnifier]');
               PluginManager.initializePlugin('ZoomModal', '[data-zoom-modal]');
+
+              this.el.classList.add(this.options.initializedCls);
 
               this.$emitter.publish('initGallerySlider');
           };

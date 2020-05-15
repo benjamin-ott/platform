@@ -114,3 +114,28 @@ based on: https://github.com/ganlanyuan/tiny-slider
         }
     }
 }
+
+// handles slider item visibility before slider is fully initialized
+[data-base-slider],
+[data-gallery-slider],
+[data-product-slider] {
+    &:not(.js-slider-initialized) {
+        [data-base-slider-container],
+        [data-product-slider-container],
+        [data-gallery-slider-container] {
+            > *:not(:first-child) {
+                display: none !important;
+            }
+        }
+    }
+}
+
+// product slider should be faded in if it is fully initialized, otherwise product-boxes are displayed in full-width
+[data-product-slider] {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.3, 0, 0.15, 1);
+
+    &.js-slider-initialized {
+        opacity: 1;
+    }
+}
